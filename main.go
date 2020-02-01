@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/tufanbarisyildirim/ss-http-sw"
 	"log"
 	"net/http"
 	"os"
@@ -10,7 +9,7 @@ import (
 	"syscall"
 )
 
-var webServer = ss_http_sw.NewWebServer("127.0.0.1:8090", "stats.txt")
+var webServer = NewWebServer("127.0.0.1:8090", "stats.txt")
 
 func main() {
 	sigs := make(chan os.Signal, 1)

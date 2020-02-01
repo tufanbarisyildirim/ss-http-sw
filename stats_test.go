@@ -1,4 +1,4 @@
-package ss_http_sw
+package main
 
 import (
 	"log"

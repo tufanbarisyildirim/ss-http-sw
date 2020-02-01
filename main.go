@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -18,8 +17,6 @@ func main() {
 	webServer.Router.HandleFunc("/", mainHandlerFunc)
 
 	go webServer.Start()
-
-	log.Println("please visit http://127.0.0.1:8090")
 
 	<-sigs
 	webServer.Stop()

@@ -35,7 +35,6 @@ func (ws *WebServer) Stop() {
 	if err != nil {
 		ws.Logger.Fatalf("error stopping http server %s", err)
 	}
-
 	ws.Stats.Stop()
 }
 
@@ -48,7 +47,6 @@ func (ws *WebServer) middlewareStats(next http.Handler) http.Handler {
 }
 
 func (ws *WebServer) Start() {
-
 	ws.Stats.Start()
 
 	ws.server = &http.Server{
@@ -56,6 +54,8 @@ func (ws *WebServer) Start() {
 		Handler:  ws.middlewareStats(ws.Router),
 		ErrorLog: ws.Logger,
 	}
+
+	log.Println("starting http server  http://127.0.0.1:8090")
 
 	if err := ws.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		ws.Logger.Fatalf("Could not listen on %s: %v\n", ws.Addr, err)
